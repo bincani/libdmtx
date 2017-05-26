@@ -65,6 +65,11 @@ EncodeNextChunkAscii(DmtxEncodeStream *stream, int option)
             /* Regular ASCII */
             AppendValueAscii(stream, v0 + 1); CHKERR;
          }
+         else if(v0 == DmtxValueFNC1)
+         {
+             /* Special handling for {FNC1} */
+             AppendValueAscii(stream, v0); CHKERR;
+         }
          else
          {
             /* Extended ASCII */
